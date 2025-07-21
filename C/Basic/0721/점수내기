@@ -1,0 +1,42 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+int main(void)
+{
+	int score;
+	while (1) {
+		scanf("%d", &score);
+
+		if (score < 0 || score > 100) {
+			printf("잘못된 입력입니다.\n");
+			continue;
+		}
+		switch (score / 10) {
+		case 10:
+		case 9:
+			printf("A");
+			break;
+		case 8:
+			printf("B");
+			break;
+		case 7:
+			printf("C");
+			break;
+		case 6:
+			printf("D");
+			break;
+		default:
+			printf("F");
+			break;
+
+		}
+		printf("\n");
+	}
+	/*if (score >= 90 && score <= 100) { printf("A"); }
+	else if (score >= 80 && score <= 89) { printf("B"); }
+	else if (score >= 70 && score <= 79) { printf("C"); }
+	else if (score >= 60 && score <= 69) { printf("D"); }
+	else { printf("F"); }*/
+	return 0;
+}
