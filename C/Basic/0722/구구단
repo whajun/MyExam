@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+int main(void)
+{
+	int dan;
+	printf("출력할 단을 입력하세요 (2~9):");
+		scanf("%d", &dan);
+	if (dan >= 2 && dan <= 9) {
+		printf("\n--- %단 ---\n", dan);
+		for (int i = 1; i <= 9; i++) {
+			printf("%d * %d = %d\n", dan, i, dan * i);
+		}
+
+	}
+	else {
+		printf("2에서 9사이의 숫자만 입력해주세요.\n");
+	}
+	return 0;
+}
