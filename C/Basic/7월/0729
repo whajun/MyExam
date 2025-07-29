@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <stdlib.h> // srand(), rand() 함수 사용을 위해 필요
+#include <time.h>   // time() 함수 사용을 위해 필요
+
+int main(void) {
+    int lotto_numbers[6];
+    int i, j;
+
+    // 1. 난수 생성기 시드 설정
+    srand((unsigned int)time(NULL));
+
+    printf("로또 번호 생성기 🎲\n");
+
+    for (i = 0; i < 6; i++) {
+        // 2. 1 ~ 45 사이의 난수 생성
+        int new_num = rand() % 45 + 1;
+
+        // 3. 중복 검사
+        for (j = 0; j < i; j++) {
+            if (lotto_numbers[j] == new_num) {
+                i--; // 중복된 경우, 현재 순서를 다시 뽑기 위해 i를 1 감소
+                break;
+            }
+        }
+
+        // 중복이 아닐 경우에만 배열에 숫자 저장
+        if (j == i) {
+            lotto_numbers[i] = new_num;
+        }
+    }
+
+    // 4. 오름차순 정렬 (버블 정렬)
+    for (i = 0; i < 5; i++) {
+        for (j = i + 1; j < 6; j++) {
+            if (lotto_numbers[i] > lotto_numbers[j]) {
+                int temp = lotto_numbers[i];
+                lotto_numbers[i] = lotto_numbers[j];
+                lotto_numbers[j] = temp;
+            }
+        }
+    }
+
+    // 5. 최종 번호 출력
+    printf("생성된 번호: ");
+    for (i = 0; i < 6; i++) {
+        printf("%d ", lotto_numbers[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
